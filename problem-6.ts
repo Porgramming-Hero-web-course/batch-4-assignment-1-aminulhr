@@ -4,13 +4,12 @@ interface Profile {
   email: string;
 }
 
-const updateProfile = (profile: Profile, updates: Partial<Profile>) => {
+const updateProfile = (person: Profile, updates: Partial<Profile>) => {
   for (const update in updates) {
     const key = update as keyof Profile;
-    (profile[key] as any) = updates[key];
+    (person[key] as any) = updates[key];
   }
-  return profile;
+  return person;
 };
-const myProfile: Profile = { name: "Alice", age: 20, email: "alice@example" };
-// const updatedProfile = updateProfile(myProfile, { name: "roki" });
-console.log(myProfile);
+const myProfile = { name: "Alice", age: 25, email: "alice@example.com" };
+console.log(updateProfile(myProfile, { age: 26 }));
